@@ -2,63 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SQL Viewer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #f4f6fb;
       color: #333;
-      margin: 0;
-      padding: 40px;
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-    a.back-link {
-      display: inline-block;
-      margin-bottom: 20px;
-      text-decoration: none;
+    a {
       color: #0070f3;
+      text-decoration: none;
       font-weight: 500;
     }
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+      color: #2d2d2d;
       margin-bottom: 10px;
     }
     pre {
-      background: #f0f4f8;
+      background: #fff;
+      border-left: 4px solid #007acc;
       padding: 20px;
-      border-radius: 8px;
-      overflow-x: auto;
-      font-size: 0.95rem;
+      font-family: 'Fira Code', monospace;
       white-space: pre-wrap;
-      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-    .footer {
-      margin-top: 40px;
-      font-size: 0.85rem;
-      color: #999;
-      text-align: center;
+    .highlight {
+      color: #007acc;
+      font-weight: bold;
+    }
+    .comment {
+      color: #888;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <a href="index.html" class="back-link">← Back to Questions</a>
-    <h1 id="fileName">Loading…</h1>
-    <pre id="code">Fetching file…</pre>
-    <div class="footer">&copy; 2025 ML Voyager</div>
-  </div>
+
+  <a href="index.html">← Back to Questions</a>
+  <h1 id="fileName">Loading…</h1>
+  <pre id="code">Fetching file…</pre>
 
   <script>
     (async () => {
@@ -74,14 +61,21 @@
       }
 
       fileNameEl.textContent = file;
-      const branch = "master";
+
+      const branch = 'master';
       const url = `https://raw.githubusercontent.com/sandeepny441/sql_home/${branch}/${file}`;
 
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error("Not found");
-        const text = await res.text();
-        codeEl.textContent = text;
+        let text = await res.text();
+
+        // Basic syntax highlighting
+        text = text
+          .replace(/^-- .*/gm, (m) => `<span class="comment">${m}</span>`)
+          .replace(/\b(SELECT|FROM|JOIN|ON|WHERE|AND|OR|INNER|LEFT|OUTER|AS|ORDER BY|GROUP BY|NULL|USE)\b/gi, '<span class="highlight">$1</span>');
+
+        codeEl.innerHTML = text;
       } catch (e) {
         codeEl.textContent = "File not found or fetch error.";
       }
