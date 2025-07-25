@@ -1,84 +1,87 @@
 -- CURRENT_DATE
-1. Use CURRENT_DATE to calculate how many days ago each employee was hired.
-2. Find employees hired exactly one year before the current date.
-3. List departments and count employees hired after the current date minus 3 years.
-
--- CURRENT_TIME
-1. Retrieve the current time and concatenate it with the current date.
-2. Use CURRENT_TIME to check if it's after noon (12:00:00).
+1.USE CURRENT_DATE TO calculate how many days ago each employee was hired.2.Find employees hired exactly one year before the current date.3.List departments
+AND count employees hired
+AFTER
+  the current date
+MINUS
+3 years.-- CURRENT_TIME
+1.Retrieve the current time
+AND concatenate it WITH the current date.2.USE CURRENT_TIME TO CHECK IF it 's after noon (12:00:00).
 3. Calculate the seconds since midnight using CURRENT_TIME.
 
 -- DATE_ADD
-1. Add 6 months to each employee's hire_date and list the new dates.
-2. Find employees whose hire_date plus 2 years is before the current date.
-3. Use DATE_ADD to project hire_date forward by 100 days.
-
--- DATE_SUB
-1. Subtract 1 year from each hire_date and order by the result.
-2. Find the difference after subtracting 30 days from the current date and compare to hire_dates.
-3. Use DATE_SUB to find hire_dates within 3 months before a specific date like '2023-01-01'.
-
--- YEAR
-1. Extract the year from each hire_date and group employees by hire year.
-2. Find the number of employees hired in the year 2021.
-3. List employees where the hire year is greater than 2020.
-
--- MONTH
-1. Extract the month from hire_date and find hires in January.
-2. Group employees by the month of their hire_date and count per month.
-3. Find the average salary for employees hired in months 1 through 6.
-
--- DAY
-1. Extract the day of the month from hire_date and list employees hired on the 15th.
-2. Find hires where the day of hire_date is even.
-3. Group by day of hire_date and count hires on each day.
-
--- HOUR
-1. Assuming a datetime column, extract the hour from CURRENT_TIMESTAMP.
-2. Use HOUR on CURRENT_TIME to determine if it's business hours (9-17).
-3. Calculate total hours since a fixed time like '00:00:00'.
+1. Add 6 months to each employee' s hire_date
+AND list the new dates.2.Find employees whose hire_date plus 2 years IS before the current date.3.USE DATE_ADD TO project hire_date forward by 100 days.-- DATE_SUB
+1.Subtract 1 year
+FROM
+  each hire_date
+  AND
+ORDER BY
+  the result.2.Find the difference
+AFTER
+  subtracting 30 days
+FROM
+  the current date
+  AND compare TO hire_dates.3.USE DATE_SUB TO find hire_dates within 3 months before a specific date LIKE '2023-01-01'.-- YEAR
+  1.Extract the year
+FROM
+  each hire_date
+  AND group employees by hire year.2.Find the number of employees hired IN the year 2021.3.List employees
+WHERE
+  the hire year IS greater than 2020.-- MONTH
+  1.Extract the MONTH
+FROM
+  hire_date
+  AND find hires IN January.2.Group employees by the MONTH of their hire_date
+  AND count per MONTH.3.Find the average salary FOR employees hired IN months 1 through 6.-- DAY
+  1.Extract the DAY of the MONTH
+FROM
+  hire_date
+  AND list employees hired ON the 15th.2.Find hires
+WHERE
+  the DAY of hire_date IS even.3.
+GROUP BY
+  DAY of hire_date
+  AND count hires ON each DAY.-- HOUR
+  1.Assuming a datetime COLUMN,
+  extract the HOUR
+FROM
+  CURRENT_TIMESTAMP.2.USE HOUR ON CURRENT_TIME TO determine IF it 's business hours (9-17).
+3. Calculate total hours since a fixed time like ' 00 :00 :00 '.
 
 -- MINUTE
-1. Extract minutes from CURRENT_TIME and see if it's on the hour (minute=0).
-2. Use MINUTE on a time value to add minutes to a date.
-3. Find if CURRENT_TIME minute is greater than 30.
-
--- SECOND
-1. Extract seconds from CURRENT_TIME.
-2. Use SECOND to check if seconds are even.
-3. Add seconds to CURRENT_TIMESTAMP using DATE_ADD with INTERVAL.
-
--- DAYNAME
-1. Find the day name of each hire_date and list employees hired on Mondays.
-2. Group hires by DAYNAME(hire_date) and count per weekday.
-3. Find if the current date is a Friday using DAYNAME(CURRENT_DATE).
-
--- MONTHNAME
-1. Extract the month name from hire_date and find hires in March.
-2. Group employees by MONTHNAME(hire_date) and calculate average salary.
-3. List distinct month names of hire dates in the table.
-
--- DAYOFYEAR
-1. Calculate DAYOFYEAR for each hire_date and find those in the first quarter (1-90).
-2. Find the maximum DAYOFYEAR among hire_dates.
-3. Compare DAYOFYEAR(CURRENT_DATE) to DAYOFYEAR(hire_date) for each employee.
-
--- DAYOFWEEK
-1. Use DAYOFWEEK to find employees hired on weekends (1=Sunday, 7=Saturday).
-2. Group by DAYOFWEEK(hire_date) and count hires per day of week.
-3. Check if hire_date DAYOFWEEK is 2 (Monday).
-
--- WEEK
-1. Extract the week number from hire_date and group by week.
-2. Find hires in week 1 of any year.
-3. Calculate the week difference between CURRENT_DATE and hire_date.
-
--- LAST_DAY
-1. Find the last day of the month for each hire_date.
-2. Use LAST_DAY(CURRENT_DATE) to get the end of the current month.
-3. Find employees hired in the last week of their hire month by comparing to LAST_DAY.
-
--- DATEDIFF
-1. Calculate DATEDIFF between CURRENT_DATE and hire_date to find days employed.
-2. Find employees where DATEDIFF(hire_date, '2020-01-01') > 365.
-3. Use DATEDIFF to order employees by tenure in years (divide by 365).
+1. Extract minutes from CURRENT_TIME and see if it' s ON the HOUR (MINUTE = 0).2.USE MINUTE ON a time value TO
+ADD
+  minutes TO a date.3.Find IF CURRENT_TIME MINUTE IS greater than 30.-- SECOND
+  1.Extract seconds
+FROM
+  CURRENT_TIME.2.USE SECOND TO CHECK IF seconds are even.3.
+ADD
+  seconds TO CURRENT_TIMESTAMP USING DATE_ADD WITH INTERVAL.-- DAYNAME
+  1.Find the DAY name of each hire_date
+  AND list employees hired ON Mondays.2.Group hires by DAYNAME(hire_date)
+  AND count per weekday.3.Find IF the current date IS a Friday USING DAYNAME(CURRENT_DATE).-- MONTHNAME
+  1.Extract the MONTH name
+FROM
+  hire_date
+  AND find hires IN March.2.Group employees by MONTHNAME(hire_date)
+  AND calculate average salary.3.List DISTINCT MONTH NAMES of hire dates IN the TABLE.-- DAYOFYEAR
+  1.Calculate DAYOFYEAR FOR each hire_date
+  AND find those IN the FIRST quarter (1 -90).2.Find the maximum DAYOFYEAR among hire_dates.3.Compare DAYOFYEAR(CURRENT_DATE) TO DAYOFYEAR(hire_date) FOR each employee.-- DAYOFWEEK
+  1.USE DAYOFWEEK TO find employees hired ON weekends (1 = Sunday, 7 = Saturday).2.
+GROUP BY
+  DAYOFWEEK(hire_date)
+  AND count hires per DAY of week.3.CHECK IF hire_date DAYOFWEEK IS 2 (Monday).-- WEEK
+  1.Extract the week number
+FROM
+  hire_date
+  AND
+GROUP BY
+  week.2.Find hires IN week 1 of any year.3.Calculate the week difference BETWEEN CURRENT_DATE
+  AND hire_date.-- LAST_DAY
+  1.Find the last DAY of the MONTH FOR each hire_date.2.USE LAST_DAY(CURRENT_DATE) TO get the
+END of the current MONTH.3.Find employees hired IN the last week of their hire MONTH by comparing TO LAST_DAY.-- DATEDIFF
+1.Calculate DATEDIFF BETWEEN CURRENT_DATE
+AND hire_date TO find days employed.2.Find employees
+WHERE
+  DATEDIFF(hire_date, '2020-01-01') > 365.3.USE DATEDIFF TO order employees by tenure IN years (divide by 365).
