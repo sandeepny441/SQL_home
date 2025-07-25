@@ -1,63 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>SQL Viewer</title>
-<style>
-  body{font-family:system-ui, sans-serif; max-width:900px; margin:40px auto; line-height:1.5;}
-  pre{background:#d7f3c9; padding:16px; overflow:auto; border:1px solid #db4d4d; border-radius:6px; white-space:pre-wrap;}
-  #fileName{font-weight:600; margin-bottom:1rem;}
-  a{color:#15329b;}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Viewer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      margin: 0;
+      padding: 40px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    a.back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #0070f3;
+      font-weight: 500;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    pre {
+      background: #f0f4f8;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      white-space: pre-wrap;
+      border: 1px solid #e0e0e0;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: #999;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <a href="index.html">← Back</a>
-  <h1 id="fileName">Loading…</h1>
-  <pre id="code">Fetching file…</pre>
+  <div class="container">
+    <a href="index.html" class="back-link">← Back to Questions</a>
+    <h1 id="fileName">Loading…</h1>
+    <pre id="code">Fetching file…</pre>
+    <div class="footer">&copy; 2025 ML Voyager</div>
+  </div>
 
-<script>
-(async () => {
-  const params = new URLSearchParams(location.search);
-  const file = params.get("file");
-  const fileNameEl = document.getElementById("fileName");
-  const codeEl = document.getElementById("code");
+  <script>
+    (async () => {
+      const params = new URLSearchParams(location.search);
+      const file = params.get("file");
+      const fileNameEl = document.getElementById("fileName");
+      const codeEl = document.getElementById("code");
 
-  if(!file){
-    fileNameEl.textContent = "No file specified";
-    codeEl.textContent = "Use viewer.html?file=FILENAME.sql";
-    return;
-  }
+      if (!file) {
+        fileNameEl.textContent = "No file specified";
+        codeEl.textContent = "Use viewer.html?file=FILENAME.sql";
+        return;
+      }
 
-  fileNameEl.textContent = file;
+      fileNameEl.textContent = file;
+      const branch = "master";
+      const url = `https://raw.githubusercontent.com/sandeepny441/sql_home/${branch}/${file}`;
 
-  // adjust 'main' to 'master' if that's your default branch
-  const branch = 'master';
-  const url = `https://raw.githubusercontent.com/sandeepny441/sql_home/${branch}/${file}`;
-
-  try{
-    const res = await fetch(url);
-    if(!res.ok) throw new Error("Not found");
-    const text = await res.text();
-    codeEl.textContent = text;
-  }catch(e){
-    codeEl.textContent = "File not found or fetch error.";
-  }
-})();
-</script>
-
-<style>
-  body{
-    font-family:system-ui, sans-serif;
-    max-width:820px;
-    margin:40px auto;
-    line-height:1.55;
-    /* ↓ Add a background color (pick yours) */
-   /*  background:#f7f9fc;            light gray-blue */
-   background:rgb(218, 194, 214); color:rgb(58, 8, 68);
-  }
-  /* rest of your styles… */
-</style>
-
-
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Not found");
+        const text = await res.text();
+        codeEl.textContent = text;
+      } catch (e) {
+        codeEl.textContent = "File not found or fetch error.";
+      }
+    })();
+  </script>
 </body>
 </html>
