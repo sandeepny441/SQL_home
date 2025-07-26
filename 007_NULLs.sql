@@ -2,18 +2,22 @@
 -- 1. Find all employees where the salary IS NULL.
 -- 2. List departments with location IS NULL.
 -- 3. Retrieve employees whose manager_id IS NULL.
+--======================================================================
 -- IS NOT NULL
 -- 4. Find all employees where dept_id IS NOT NULL.
 -- 5. List employees with salary IS NOT NULL and hired after 2020.
 -- 6. Retrieve departments where location IS NOT NULL.
+--======================================================================
 -- COALESCE
 -- 7. Use COALESCE to replace NULL salaries with 0 and list all employees.
 -- 8. Display department locations using COALESCE to show 'Unknown' for NULL locations.
 -- 9. For each employee, show manager_id or 'No Manager' using COALESCE.
+--======================================================================
 -- NULLIF
 -- 10. Use NULLIF to set salary to NULL if it equals 80000 and list employees.
 -- 11. For dept_name, use NULLIF to return NULL if location is 'New York'.
 -- 12. Apply NULLIF on emp_id if it matches manager_id to illustrate.
+--======================================================================
 -- NULLs and Joins – WHERE vs ON
 -- 13. Perform a RIGHT JOIN on dept and emp ON dept_id with hire_date > '2020-01-01' in ON clause to include all depts with NULLs where condition fails.
 -- 14. Compare LEFT JOIN emp to dept ON dept_id with location = 'New York' in WHERE vs ON to see how NULL locations are handled.

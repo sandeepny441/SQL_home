@@ -2,18 +2,22 @@
 -- 1. How many days ago was each employee hired?
 -- 2. Which employees were hired exactly one year before today?
 -- 3. Which departments have employees hired after today minus 3 years?
+--======================================================================
 -- 🕒 CURRENT_TIME
 -- 1. What is the current time, and how does it concatenate with today’s date?
 -- 2. Is the current time after noon (12:00:00)?
 -- 3. How many seconds have passed since midnight?
+--======================================================================
 -- ➕ DATE_ADD
 -- 1. What is each employee's hire date plus 6 months?
 -- 2. Which employees were hired more than 2 years ago?
 -- 3. What will each employee’s hire date be after 100 days?
+--======================================================================
 -- ➖ DATE_SUB
 -- 1. What is each hire date minus 1 year?
 -- 2. How do hire dates compare to the current date minus 30 days?
 -- 3. Which employees were hired within 3 months before ‘2023-01-01’?
+--======================================================================
 -- 🗓️ YEAR
 -- 1. What year was each employee hired?
 -- 2. How many employees were hired in 2021?
